@@ -5,12 +5,6 @@
 
 module.exports = {
   pages: {
-    'index': {
-      entry: './src/pages/Index/main.js',
-      template: 'public/index.html',
-      title: 'Home',
-      chunks: ['chunks-vendors', 'chunk-common', 'index']
-    },
     'login': {
       entry: './src/pages/Login/main.js',
       template: 'public/index.html',
