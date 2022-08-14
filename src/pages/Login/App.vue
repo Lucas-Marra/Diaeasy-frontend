@@ -60,9 +60,9 @@
                         </div>
                     </div>
                     <div class="d-flex justify-content-between">
-                        <button type="button" v-on:click="logar"
+                        <button type="button"
                             class="btn w-45 btn-lg btn-secondary">Cadastrar</button>
-                        <button type="button" class="btn w-45 btn-lg btn-primary">Entrar</button>
+                        <button type="button" class="btn w-45 btn-lg btn-primary" v-on:click="logar">Entrar</button>
                     </div>
                 </form>
             </div>
@@ -93,14 +93,10 @@ export default {
     },
     methods: {
         logar() {
-            console.log(this.email)
-            this.v$.$validate()
-            this.v$.$invalid ? console.log('invalido') : console.log('usuario: ' + this.usuario + '\nsenha: ' + this.senha);
-            this.email = 'pinguzera@123'
-            
+            this.v$.$validate();
         },
         limpaCampos() {
-            this.v$.$reset()
+            this.v$.$reset();
             this.email = '';
             this.senha = '';
         }
