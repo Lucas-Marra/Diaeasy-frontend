@@ -1,0 +1,47 @@
+<template>
+    <div class="vh-100 w-50px top-0 position-relative d-inline-block">
+        <div class="position-sticky d-flex flex-column align-items-center">
+
+
+            <a v-for="icon in iconesPaciente" :key="icon.src" :href="icon.href" class="pb-3 border-bottom border-white">
+                <img :src="require(`@/assets/${icon.src}`)" :alt="icon.alt" :title="icon.title" class="icons mt-3">
+            </a>
+
+        </div>
+    </div>
+</template>
+
+<script>
+export default {
+    name: 'SideBarComponent',
+    data() {
+        return {
+            iconesPaciente: [
+                { href: '/home', src: 'home.png', alt: 'Home', title: 'home' },
+                { href: '/login', src: 'ok.png', alt: 'Home', title: 'home' }
+            ]
+        }
+    }
+}
+</script>
+
+<style scoped>
+* {
+    background-color: #083b66;
+    margin: 0;
+}
+
+.top-0 {
+    top: 0;
+    left: 0;
+}
+
+.w-50px {
+    width: 50px;
+    max-width: 50px;
+}
+
+.icons {
+    width: 30px;
+}
+</style>

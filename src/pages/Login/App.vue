@@ -8,7 +8,7 @@
                 </div>
             </div>
             <div class="col-sm-6 d-flex flex-column justify-content-center align-items-center">
-                <form class="">
+                <form class="w-400px">
                     <nav class="d-flex justify-content-center">
                         <div class="nav nav-tabs mb-3" id="nav-tab" role="tablist">
                             <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab"
@@ -107,5 +107,9 @@ export default {
 <style scoped>
 .w-45 {
     width: 45% !important;
+}
+
+.w-400px {
+    width: 400px
 }
 </style>
