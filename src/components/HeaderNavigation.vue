@@ -1,5 +1,5 @@
 <template>
-    <header class="override">
+    <header id="header" class="override">
         <div class="px-4 h-80px d-flex background align-items-center justify-content-between ">
             <img src="@/assets/logo-diaeasy-header.png" class="h-70 background" />
             <div class="background d-flex justify-content-between align-items-center">
@@ -41,4 +41,5 @@ export default {
 .h-70 {
     height: 70% !important;
 }
+
 </style>

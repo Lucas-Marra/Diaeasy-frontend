@@ -1,12 +1,9 @@
 <template>
-    <div class="vh-100 w-50px top-0 position-relative d-inline-block">
-        <div class="position-sticky d-flex flex-column align-items-center">
-
-
+    <div class="vh-100 top-0">
+        <div class="d-flex flex-column align-items-center">
             <a v-for="icon in iconesPaciente" :key="icon.src" :href="icon.href" class="pb-3 border-bottom border-white">
                 <img :src="require(`@/assets/${icon.src}`)" :alt="icon.alt" :title="icon.title" class="icons mt-3">
             </a>
-
         </div>
     </div>
 </template>

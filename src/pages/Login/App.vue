@@ -1,5 +1,5 @@
 <template>
-    <div class="container-fluid vh-100">
+    <div class="container-fluid vh-100" id="content">
         <div class="row h-100">
             <div class="col-sm-6 d-flex justify-content-center align-items-center px-0">
                 <div
@@ -105,6 +105,10 @@ export default {
 </script>
 
 <style scoped>
+#content {
+    background-color: #ebebeb;
+}
+
 .w-45 {
     width: 45% !important;
 }

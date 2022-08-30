@@ -1,12 +1,11 @@
 <template>
     <div>
         <HeaderNavigation />
-        <SideBarNavigation />
-        <div class="d-inline-block position-absolute">
-            <div>
+        <div id="grid">
+            <SideBarNavigation class="position-sticky" />
+            <div id="content">
                 <h2 class="ms-4 mt-5">Bem-vindo, {{ nome }}</h2>
             </div>
-            
         </div>
     </div>
 
@@ -31,7 +30,8 @@ export default {
 </script>
 
 <style scoped>
-.height {
-    height: 10000px;
+#grid {
+    display: grid;
+    grid-template-columns: 50px auto;
 }
 </style>
