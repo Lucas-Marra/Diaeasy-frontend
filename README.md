@@ -1,4 +1,4 @@
-# Front-end-tcc
+# Front-end TCC Diaeasy
 
 ## Project setup
 ```
