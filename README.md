@@ -1,4 +1,6 @@
 # Front-end TCC Diaeasy
+### Lucas Marra Rebello
+### Nasser Mohamad Bazaan
 
 ## Project setup
 ```
