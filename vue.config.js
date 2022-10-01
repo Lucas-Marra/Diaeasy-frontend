@@ -18,7 +18,7 @@ module.exports = {
       chunks: ['chunks-vendors', 'chunk-common', 'home']
     },
     'marcar-glicemia': {
-        entry: './src/pages/Marcar-glicemia/main.js',
+        entry: './src/pages/paciente/Marcar-glicemia/main.js',
         template: 'public/index.html',
         title: 'Marcar Glicemia',
         chunks: ['chunks-vendors', 'chunk-common', 'marcar-glicemia']
