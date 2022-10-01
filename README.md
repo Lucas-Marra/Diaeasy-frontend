@@ -1,4 +1,4 @@
-# teste-vue-ui
+# Projeto TCC Diaeasy - em andamento
 
 ## Project setup
 ```
