@@ -1,51 +1,50 @@
 <template>
     <div>
-        <HeaderNavigation id="header" />
+        <HeaderNavigation id="header"/>
         <div id="grid">
             <SideBarNavigation class="position-sticky" />
             <div id="content">
-                <div class="d-flex justify-content-around mb-4 mt-4">
-                    <div class="w-500px">
-                        <h3 class="text-center">Nova Marcação</h3>
-                    </div>
-                    <div class="w-800px">
-                        <h3 class="text-center">Marcações recentes</h3>
-                    </div>
-                </div>
-                <div class="d-flex justify-content-around">
-                    <div id="card-marcacao" class="p-3">
-                        <h4 class="d-block">Marcar Medição de Glicemia</h4>
-                        <div class="mb-3">
-                            <label for="glicemia" class="form-label">Valor da Glicemia</label>
-                            <input type="text" class="form-control" name="glicemia" id="glicemia">
+                <div class="d-flex justify-content-around flex-wrap">
+                    <div class="m-4">
+                        <div class="w-500px">
+                            <h3 class="text-center">Nova Marcação</h3>
                         </div>
-                        <div class="mb-3">
-                            <label for="observacao" class="form-label">Observação</label>
-                            <textarea class="form-control" name="observacao" id="observacao" rows="4"></textarea>
-                        </div>
-                        <div class="d-flex justify-content-start mb-3">
-                            <div class="me-4">
-                                <label for="glicemia" class="form-label">Data</label>
-                                <input type="date" class="form-control" name="glicemia" id="glicemia">
+                        <div id="card-marcacao" class="p-3">
+                            <h4 class="d-block">Marcar Medição de Glicemia</h4>
+                            <div class="mb-3">
+                                <label for="glicemia" class="form-label">Valor da Glicemia</label>
+                                <input type="text" class="form-control" name="glicemia" id="glicemia">
                             </div>
-                            <div>
-                                <label for="glicemia" class="form-label">Hora</label>
-                                <input type="time" class="form-control" name="glicemia" id="glicemia">
+                            <div class="mb-3">
+                                <label for="observacao" class="form-label">Observação</label>
+                                <textarea class="form-control" name="observacao" id="observacao" rows="4"></textarea>
+                            </div>
+                            <div class="d-flex justify-content-start mb-3">
+                                <div class="me-4">
+                                    <label for="glicemia" class="form-label">Data</label>
+                                    <input type="date" class="form-control" name="glicemia" id="glicemia">
+                                </div>
+                                <div>
+                                    <label for="glicemia" class="form-label">Hora</label>
+                                    <input type="time" class="form-control" name="glicemia" id="glicemia">
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <button type="button" class="btn w-100 btn-lg dark-blue-diaeasy">Registrar</button>
                             </div>
                         </div>
-                        <div class="d-flex justify-content-between">
-                            <button type="button" class="btn w-100 btn-lg dark-blue-diaeasy">Registrar</button>
-                        </div>
                     </div>
-
-                    <div id="tabela-recentes">
+                    <div id="tabela-recentes" class="m-4">
+                        <div class="w-800px">
+                            <h3 class="text-center">Marcações recentes</h3>
+                        </div>
                         <table class="table table-striped">
                             <thead>
                                 <tr>
                                     <th scope="col"> </th>
                                     <th scope="col">Glicemia</th>
                                     <th scope="col">Data</th>
-                                    <th scope="col">Horario</th>
+                                    <th scope="col">Horário</th>
                                 </tr>
                             </thead>
                             <tbody class="table-group-divider">
