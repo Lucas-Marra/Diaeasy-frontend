@@ -5,46 +5,27 @@
             <SideBarNavigation class="position-sticky" />
 
             <div id="content" class="d-flex justify-content-around flex-wrap h-50 mt-5">
-                <div id="tabela" class="ps-5">
-                    <table class="table table-striped">
+                <div id="card-tabela" class="ps-5">
+                    <table class="table table-striped table-hover border">
                         <thead>
                             <tr>
-                                <th scope="col"> </th>
+                                <th scope="col" class="text-center">#</th>
                                 <th scope="col">Glicemia</th>
                                 <th scope="col">Data</th>
                                 <th scope="col">Horário</th>
-                                <th scope="col">Descrição</th>
+                                <th scope="col">Última refeição</th>
                                 <th scope="col">Status</th>
                             </tr>
                         </thead>
                         <tbody class="table-group-divider">
-                            <tr>
-                                <th scope="row">1</th>
+                            <tr class="cursor-pointer" @click="detalharGlicemia($event)">
+                                <th scope="row" class="text-center">1</th>
                                 <td>112 mg/dL</td>
                                 <td>29/09/2022</td>
                                 <td>14:52</td>
-                                <td> - </td>
-                                <td><strong class="text-danger">Baixa</strong></td>
+                                <td>13:00</td>
+                                <td><strong class="text-success">Normal</strong></td>
                             </tr>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>112 mg/dL</td>
-                                <td>29/09/2022</td>
-                                <td>14:52</td>
-                                <td> - </td>
-                                <td><strong class="text-danger">Baixa</strong></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>112 mg/dL</td>
-                                <td>29/09/2022</td>
-                                <td>14:52</td>
-                                <td> - </td>
-                                <td><strong class="text-danger">Baixa</strong></td>
-                            </tr>
-
-
-
                         </tbody>
                     </table>
                 </div>
@@ -77,6 +58,11 @@ export default {
         return {
         }
     },
+    methods: {
+        detalharGlicemia(linha) {
+            console.log(linha)
+        }
+    }
 }
 </script>
 
@@ -86,16 +72,17 @@ export default {
     grid-template-columns: 50px auto;
 }
 
-#tabela {
+#card-tabela {
     width: 800px;
-}
-
-#tabela {
     max-height: 100%;
     overflow-y: auto;
 }
 
 #medidas-padrao {
     width: 600px;
+}
+
+.cursor-pointer {
+    cursor: pointer;
 }
 </style>

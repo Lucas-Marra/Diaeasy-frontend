@@ -14,8 +14,24 @@ export default {
     data() {
         return {
             iconesPaciente: [
-                { href: '/home', src: 'home.png', alt: 'Icone de casa indicando home', title: 'home' },
-                { href: '/paciente/marcar-glicemia', src: 'ok.png', alt: 'Icone de marcação para marcar glicemia', title: 'Marcar glicemia' }
+                { 
+                    href: '/home', 
+                    src: 'home.png', 
+                    alt: 'Icone de casa indicando home', 
+                    title: 'home' 
+                },
+                {
+                    href: '/paciente/marcar-glicemia',
+                    src: 'ok.png',
+                    alt: 'Icone de marcação para marcar glicemia',
+                    title: 'Marcar glicemia'
+                },
+                {
+                    href: '/paciente/consultar-glicemia',
+                    src: 'list.png',
+                    alt: 'Ícone de lista para consultar glicemias',
+                    title: 'Consultar glicemia'
+                }
             ]
         }
     }

@@ -1,6 +1,6 @@
 <template>
     <div>
-        <HeaderNavigation id="header"/>
+        <HeaderNavigation id="header" />
         <div id="grid">
             <SideBarNavigation class="position-sticky" />
             <div id="content">
@@ -13,7 +13,11 @@
                             <h4 class="d-block">Marcar Medição de Glicemia</h4>
                             <div class="mb-3">
                                 <label for="glicemia" class="form-label">Valor da Glicemia</label>
-                                <input type="text" class="form-control" name="glicemia" id="glicemia">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" name="glicemia" id="glicemia"
+                                        aria-describedby="basic-addon2">
+                                    <span class="input-group-text" id="basic-addon2">mg/dL</span>
+                                </div>
                             </div>
                             <div class="mb-3">
                                 <label for="observacao" class="form-label">Observação</label>
@@ -21,12 +25,18 @@
                             </div>
                             <div class="d-flex justify-content-start mb-3">
                                 <div class="me-4">
-                                    <label for="glicemia" class="form-label">Data</label>
-                                    <input type="date" class="form-control" name="glicemia" id="glicemia">
+                                    <label for="data" class="form-label">Data</label>
+                                    <input type="date" class="form-control" name="data" id="data">
                                 </div>
                                 <div>
-                                    <label for="glicemia" class="form-label">Hora</label>
-                                    <input type="time" class="form-control" name="glicemia" id="glicemia">
+                                    <label for="hora" class="form-label">Hora</label>
+                                    <input type="time" class="form-control" name="hora" id="hora">
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-start mb-3">
+                                <div>
+                                    <label for="horaRefeicao" class="form-label">Hora da última refeição</label>
+                                    <input type="time" class="form-control" name="horaRefeicao" id="horaRefeicao">
                                 </div>
                             </div>
                             <div class="d-flex justify-content-between">
