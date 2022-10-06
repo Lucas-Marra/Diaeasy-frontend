@@ -26,8 +26,14 @@ module.exports = {
         'paciente/consultar-glicemia': {
             entry: './src/pages/paciente/Consultar-glicemia/main.js',
             template: 'public/index.html',
-            title: 'Consultar Glicemia',
+            title: 'Consultar Glicemias',
             chunks: ['chunks-vendors', 'chunk-common', 'paciente/consultar-glicemia']
+        },
+        'paciente/detalhar-glicemia': {
+            entry: './src/pages/paciente/Detalhar-glicemia/main.js',
+            template: 'public/index.html',
+            title: 'Detalhar Glicemia',
+            chunks: ['chunks-vendors', 'chunk-common', 'paciente/detalhar-glicemia']
         }
     }
 }
