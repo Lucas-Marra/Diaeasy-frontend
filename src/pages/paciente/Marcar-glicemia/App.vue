@@ -14,7 +14,7 @@
                             <div class="mb-3">
                                 <label for="glicemia" class="form-label">Valor da Glicemia</label>
                                 <div class="input-group">
-                                    <input type="text" class="form-control" name="glicemia" id="glicemia"
+                                    <input type="number" class="form-control" name="glicemia" id="glicemia"
                                         aria-describedby="basic-addon2">
                                     <span class="input-group-text" id="basic-addon2">mg/dL</span>
                                 </div>
@@ -33,14 +33,18 @@
                                     <input type="time" class="form-control" name="hora" id="hora">
                                 </div>
                             </div>
-                            <div class="d-flex justify-content-start mb-3">
+                            <div class="d-flex justify-content-start mb-4">
+                                <div class="me-4">
+                                    <label for="dataRefeicao" class="form-label">Data última refeição</label>
+                                    <input type="date" class="form-control" name="dataRefeicao" id="dataRefeicao">
+                                </div>
                                 <div>
                                     <label for="horaRefeicao" class="form-label">Hora da última refeição</label>
                                     <input type="time" class="form-control" name="horaRefeicao" id="horaRefeicao">
                                 </div>
                             </div>
-                            <div class="d-flex justify-content-between">
-                                <button type="button" class="btn w-100 btn-lg dark-blue-diaeasy">Registrar</button>
+                            <div class="d-flex justify-content-center">
+                                <button  type="button" class="btn btn-dark dark-blue-diaeasy border-0 w-50 mb-2">Registrar</button>
                             </div>
                         </div>
                     </div>

@@ -18,7 +18,7 @@
                             </tr>
                         </thead>
                         <tbody class="table-group-divider">
-                            <tr class="cursor-pointer" @click="detalharGlicemia($event)">
+                            <tr class="cursor-pointer" @click="detalharGlicemia()">
                                 <th scope="row" class="text-center">1</th>
                                 <td>112 mg/dL</td>
                                 <td>29/09/2022</td>
@@ -56,11 +56,21 @@ export default {
     },
     data() {
         return {
+            glicemia: {
+                valor: 200,
+                obs: 'Lorem Lucas Ipsum Marra',
+                data: '2022-08-12',
+                hora: '15:24',
+                dataRefeicao: '2022-08-12',
+                horaRefeicao: '12:00'
+            }
         }
     },
     methods: {
-        detalharGlicemia(linha) {
-            console.log(linha)
+        detalharGlicemia() {
+            localStorage.setItem('glicemia', JSON.stringify(this.glicemia));
+            // localStorage.removeItem('glicemia')
+            window.location.href = '/paciente/detalhar-glicemia';
         }
     }
 }
