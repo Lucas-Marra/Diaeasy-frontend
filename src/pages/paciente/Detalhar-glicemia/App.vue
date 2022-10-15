@@ -20,7 +20,7 @@
                             <fieldset class="col-4">
                                 <label for="data" class="form-label">Data</label>
                                 <input type="date" class="form-control" name="data" id="data" :disabled="!verificaAlterar"
-                                    v-model="marcacao.data" />
+                                    v-model="marcacao.dia" />
                             </fieldset>
                             <fieldset class="col-3">
                                 <label for="hora" class="form-label">Hora</label>
@@ -30,14 +30,14 @@
                         </div>
                         <fieldset class="mb-3">
                             <label for="obs" class="form-label">Observação</label>
-                            <textarea name="obs" class="form-control" id="obs" rows="5" v-model="marcacao.obs"
+                            <textarea name="obs" class="form-control" id="obs" rows="5" v-model="marcacao.observacao"
                                 :disabled="!verificaAlterar"></textarea>
                         </fieldset>
                         <div class="row mb-5">
                             <fieldset class="col-6">
                                 <label for="dataRefeicao" class="form-label">Data última refeição</label>
                                 <input type="date" class="form-control" name="dataRefeicao" id="dataRefeicao"
-                                    :disabled="!verificaAlterar" v-model="marcacao.dataRefeicao" />
+                                    :disabled="!verificaAlterar" v-model="marcacao.diaRefeicao" />
                             </fieldset>
                             <fieldset class="col-6">
                                 <label for="horaRefeicao" class="form-label">Hora última refeição</label>
@@ -84,14 +84,16 @@ export default {
         voltar() {
             window.location.href = '/paciente/consultar-glicemias';
         },
+        confirmarAlteracao() {
+            console.log(this.marcacao)
+        }
     },
-    beforeMount() {
+    mounted() {
         if (localStorage.getItem('glicemia') == null) {
-            console.error('deu ruim negao');
+            console.log('oi');
         } else {
             this.marcacao = JSON.parse(localStorage.getItem('glicemia'));
             localStorage.removeItem('glicemia')
-            console.log(this.marcacao)
         }
     },
 }
