@@ -27,10 +27,13 @@
                                     <td>{{ formataData(glicemia.dia) }}</td>
                                     <td>{{ glicemia.hora }}</td>
                                     <td>{{ diferencaHoras(glicemia.dia, glicemia.hora,
-                                            glicemia.diaRefeicao, glicemia.horaRefeicao, glicemia) }}</td>
+                                    glicemia.diaRefeicao, glicemia.horaRefeicao, glicemia) }}</td>
                                     <td>
-                                        <strong v-if="glicemia.status == 'normal'" class="text-success">{{ glicemia.status }}</strong>
-                                        <strong v-else-if="glicemia.status == 'hiperglicemia'" class="text-purple">{{ glicemia.status }}</strong>
+                                        <strong v-if="glicemia.status == 'normal'" class="text-success">{{
+                                        glicemia.status
+                                        }}</strong>
+                                        <strong v-else-if="glicemia.status == 'hiperglicemia'" class="text-purple">{{
+                                        glicemia.status }}</strong>
                                         <strong v-else class="text-danger">{{ glicemia.status }}</strong>
                                     </td>
                                 </tr>
@@ -100,31 +103,31 @@ export default {
             let diff = new Date(data + "T" + hora) -
                 new Date(dataR + "T" + horaR);
 
-            let mins = Math.trunc(diff / 1000 / 60 );
+            let mins = Math.trunc(diff / 1000 / 60);
 
             this.setStatus(glicemia, mins);
 
-            return (mins < 60) ? mins + " minutos" : 
-                Math.trunc(mins/60) + ":" + (mins - Math.trunc(mins/60) * 60).toString().padStart(2, "0") + " horas";
+            return (mins < 60) ? mins + " minutos" :
+                Math.trunc(mins / 60) + ":" + (mins - Math.trunc(mins / 60) * 60).toString().padStart(2, "0") + " hora(s)";
         },
         setStatus(glicemia, mins) {
             let valorGlic = glicemia.valor;
             glicemia.status = '';
             let status;
-            if(valorGlic < 70) status = 'hipoglicemia';
-            else if(mins > 120) {
-                if (valorGlic >= 70 && valorGlic <= 100)  status =  'normal';
+            if (valorGlic < 70) status = 'hipoglicemia';
+            else if (mins > 120) {
+                if (valorGlic >= 70 && valorGlic <= 100) status = 'normal';
                 else status = 'hiperglicemia'
             } else {
-                if (valorGlic >= 70 && valorGlic <= 140)  status =  'normal';
+                if (valorGlic >= 70 && valorGlic <= 140) status = 'normal';
                 else status = 'hiperglicemia'
             }
             glicemia.status = status;
         },
         formataData(data) {
-            return data.substring(8,10) + "/" 
-                + data.substring(5,7) + "/" 
-                + data.substring(0,4);
+            return data.substring(8, 10) + "/"
+                + data.substring(5, 7) + "/"
+                + data.substring(0, 4);
         },
         registrarNova() {
             window.location.href = '/paciente/marcar-glicemia';

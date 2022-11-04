@@ -110,26 +110,26 @@ export default {
             nome: 'Lucas',
             registro: {},
             putTeste: {
-                "id": 1,
-                "valor": 10,
-                "data": "2022-03-21",
-                "horario": "15:34",
-                "dataRefeicao": "2022-03-21",
-                "horarioRefeicao": "12:11",
-                "observacao": "Só um teste de observação"
+                id: 1,
+                valor: 10,
+                data: "2022-03-21",
+                horario: "15:34",
+                dataRefeicao: "2022-03-21",
+                horarioRefeicao: "12:11",
+                observacao: "Só um teste de observação"
             }
         }
     },
     methods: {
         registrar() {
             console.log(this.registro)
-            axios.post(`http://localhost:8081/paciente/glicemias/registrar/1`, this.registro) //http://localhost:8081/paciente/glicemias/registrar/1
+            axios.post(`http://localhost:8081/paciente/glicemias/registrar/1`, this.registro)
                 .then(response => {
                     console.log('criado', response);
                 })
                 .catch(e => {
                     console.error(e);
-                })
+                });
         }
     },
 }

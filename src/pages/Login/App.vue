@@ -36,7 +36,7 @@
                                 <div class="d-flex justify-content-between">
                                     <span class="form-text text-danger" v-if="v$.senha.$error">Preencha este
                                         campo!</span>
-                                    <a class="form-text" href="">Esqueci minha senha!</a>
+                                    <!-- <a class="form-text" href="">Esqueci minha senha!</a> -->
                                 </div>
                             </fieldset>
                         </div>
@@ -54,21 +54,20 @@
                                 <div class="d-flex justify-content-between">
                                     <span class="form-text text-danger" v-if="v$.senha.$error">Preencha este
                                         campo!</span>
-                                    <a class="form-text" href="">Esqueci minha senha!</a>
+                                    <!-- <a class="form-text" href="">Esqueci minha senha!</a> -->
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="d-flex justify-content-between">
-                        <button type="button"
-                            class="btn w-45 btn-lg btn-secondary">Cadastrar</button>
-                        <button type="button" class="btn w-45 btn-lg btn-primary" v-on:click="logar">Entrar</button>
+                        <!-- <button type="button"
+                            class="btn w-45 btn-lg btn-secondary">Cadastrar</button> -->
+                        <button type="button" class="btn w-100 btn-lg btn-primary" v-on:click="logar">Entrar</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
-
 </template>
 
 <script>
