@@ -1,8 +1,8 @@
 <template>
     <div>
-        <HeaderNavigation id="header" />
+        <HeaderNavigation id="header" tipo="paciente"/>
         <div id="grid">
-            <SideBarNavigation class="position-sticky" />
+            <SideBarNavigation class="position-sticky" tipo="paciente"/>
             <div id="content">
                 <h2 class="d-flex justify-content-center mt-5 mb-5"><strong>Marcações Glicemias</strong></h2>
 
@@ -17,18 +17,19 @@
                                     <th scope="col">Horário</th>
                                     <th scope="col">Tempo de jejum</th>
                                     <th scope="col">Status</th>
+                                    <th scope="col"></th>
                                 </tr>
                             </thead>
                             <tbody class="table-group-divider">
                                 <tr v-for="(glicemia, index) in glicemias" :key="glicemia.id" class="cursor-pointer"
-                                    @click="detalharGlicemia(glicemia)">
-                                    <th scope="row" class="text-center">{{ index + 1 }}</th>
-                                    <td>{{ glicemia.valor }} mg/dL</td>
-                                    <td>{{ formataData(glicemia.dia) }}</td>
-                                    <td>{{ glicemia.hora }}</td>
-                                    <td>{{ diferencaHoras(glicemia.dia, glicemia.hora,
-                                    glicemia.diaRefeicao, glicemia.horaRefeicao, glicemia) }}</td>
-                                    <td>
+                                    >
+                                    <th scope="row" class="text-center" @click="detalharGlicemia(glicemia)">{{ index + 1 }}</th>
+                                    <td @click="detalharGlicemia(glicemia)">{{ glicemia.valor }} mg/dL</td>
+                                    <td @click="detalharGlicemia(glicemia)">{{ formataData(glicemia.data) }}</td>
+                                    <td @click="detalharGlicemia(glicemia)">{{ glicemia.horario }}</td>
+                                    <td @click="detalharGlicemia(glicemia)">{{ diferencaHoras(glicemia.data, glicemia.horario,
+                                    glicemia.dataRefeicao, glicemia.horarioRefeicao, glicemia) }}</td>
+                                    <td @click="detalharGlicemia(glicemia)">
                                         <strong v-if="glicemia.status == 'normal'" class="text-success">{{
                                         glicemia.status
                                         }}</strong>
@@ -36,6 +37,7 @@
                                         glicemia.status }}</strong>
                                         <strong v-else class="text-danger">{{ glicemia.status }}</strong>
                                     </td>
+                                    <td><img @click="excluir(glicemia)" src="../../../assets/excluir.png" class="icons" title="deletar"/></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -86,15 +88,22 @@ export default {
         }
     },
     beforeMount() {
-        axios.get("http://localhost:8081/paciente/glicemias/1")
-            .then(response => {
-                this.glicemias = response.data;
-                this.exibeTabela = (this.glicemias.length > 0)
-            })
-            .catch(error => console.error(error))
+        this.buscarGlicemias();
 
     },
     methods: {
+        buscarGlicemias() {
+            const dadosLogin = JSON.parse(localStorage.getItem('dadosLogin'));
+            const config = {
+                headers: { Authorization: `Bearer ${JSON.parse(localStorage.getItem('dadosLogin')).token}` }
+            };
+            axios.get(`http://localhost:8081/paciente/glicemias/${dadosLogin.id}`, config)
+                .then(response => {
+                    this.glicemias = response.data;
+                    this.exibeTabela = (this.glicemias.length > 0)
+                })
+                .catch(error => console.error(error))
+        },
         detalharGlicemia(glicemia) {
             localStorage.setItem('glicemia', JSON.stringify(glicemia));
             window.location.href = '/paciente/detalhar-glicemia';
@@ -131,6 +140,20 @@ export default {
         },
         registrarNova() {
             window.location.href = '/paciente/marcar-glicemia';
+        },
+        excluir(glicemia) {
+            const config = {
+                headers: { Authorization: `Bearer ${JSON.parse(localStorage.getItem('dadosLogin')).token}` }
+            };
+
+            axios.delete(`http://localhost:8081/paciente/glicemias/delete/${glicemia.id}`, config)
+            .then(response => {
+                this.glicemias = response.data;
+                this.exibeTabela = (this.glicemias.length > 0)
+                this.buscarGlicemias();
+            })
+            .catch(error => console.error(error))
+
         }
     }
 }
@@ -163,5 +186,9 @@ export default {
 .path {
     background-color: darkgrey;
     color: white
+}
+
+.icons {
+    width: 25px;
 }
 </style>

@@ -23,7 +23,7 @@
                         <div class="tab-pane mb-4 fade show active" id="nav-home" role="tabpanel"
                             aria-labelledby="nav-home-tab">
                             <fieldset class="mb-3">
-                                <label for="login" class="d-block h5 mb-2 form-label">Usuário</label>
+                                <label for="login" class="d-block h5 mb-2 form-label">Email</label>
                                 <input name="login" v-model="email" class="form-control" id="login" type="text">
                                 <span class="form-text text-danger" v-if="v$.email.$error">{{ 
                                         v$.$errors[0].$validator === 'required' ? "Preencha este campo!" : "Insira um e-mail válido!"
@@ -43,9 +43,11 @@
                         <div class="tab-pane mb-4 fade" id="nav-profile" role="tabpanel"
                             aria-labelledby="nav-profile-tab">
                             <div class="mb-3">
-                                <label for="login" class="d-block h5 mb-2 form-label">CRM</label>
+                                <label for="login" class="d-block h5 mb-2 form-label">Email</label>
                                 <input name="login" v-model="email" class="form-control" id="login" type="text">
-                                <span class="form-text text-danger" v-if="v$.email.$error">Preencha este campo!</span>
+                                <span class="form-text text-danger" v-if="v$.email.$error">{{ 
+                                        v$.$errors[0].$validator === 'required' ? "Preencha este campo!" : "Insira um e-mail válido!"
+                                }}</span>
                             </div>
 
                             <div>
@@ -59,11 +61,12 @@
                             </div>
                         </div>
                     </div>
-                    <div class="d-flex justify-content-between">
+                    <div class="d-flex justify-content-between mb-3">
                         <!-- <button type="button"
                             class="btn w-45 btn-lg btn-secondary">Cadastrar</button> -->
                         <button type="button" class="btn w-100 btn-lg btn-primary" v-on:click="logar">Entrar</button>
                     </div>
+                    <span v-if="erroLogin" class="text-danger">Login/Senha inválidos!</span>
                 </form>
             </div>
         </div>
@@ -73,6 +76,7 @@
 <script>
 import useValidate from '@vuelidate/core'
 import { required, email } from '@vuelidate/validators'
+import axios from 'axios'
 
 export default {
     setup() {
@@ -81,7 +85,9 @@ export default {
     data() {
         return {
             email: '',
-            senha: ''
+            senha: '',
+
+            erroLogin: false
         }
     },
     validations() {
@@ -93,6 +99,33 @@ export default {
     methods: {
         logar() {
             this.v$.$validate();
+            if(this.v$.senha.$error || this.v$.email.$error) return;
+            
+            if(document.getElementById('nav-home').classList.contains('active')) {
+                axios.post(`http://localhost:8081/paciente/auth`, {
+                    email: this.email,
+                    senha: this.senha
+                })
+                .then((response) => {
+                    localStorage.setItem('dadosLogin', JSON.stringify(response.data));
+                    window.location.href = '/paciente/home' , 100;
+                })
+                .catch(() => {
+                    this.erroLogin = true;
+                })
+            } else {
+                axios.post(`http://localhost:8081/medico/auth`, {
+                    email: this.email,
+                    senha: this.senha
+                })
+                .then((response) => {
+                    localStorage.setItem('dadosLogin', JSON.stringify(response.data));
+                    window.location.href = '/medico/home' , 100;
+                })
+                .catch(() => {
+                    this.erroLogin = true;
+                })
+            }
         },
         limpaCampos() {
             this.v$.$reset();

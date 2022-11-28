@@ -11,11 +11,11 @@ module.exports = {
             title: 'Login',
             chunks: ['chunks-vendors', 'chunk-common', 'login']
         },
-        'home': {
-            entry: './src/pages/Home/main.js',
+        'paciente/home': {
+            entry: './src/pages/paciente/Home/main.js',
             template: 'public/index.html',
             title: 'Home',
-            chunks: ['chunks-vendors', 'chunk-common', 'home']
+            chunks: ['chunks-vendors', 'chunk-common', 'paciente/home']
         },
         'paciente/marcar-glicemia': {
             entry: './src/pages/paciente/Marcar-glicemia/main.js',
@@ -34,6 +34,12 @@ module.exports = {
             template: 'public/index.html',
             title: 'Detalhar Glicemia',
             chunks: ['chunks-vendors', 'chunk-common', 'paciente/detalhar-glicemia']
+        },
+        'medico/home': {
+            entry: './src/pages/medico/Home/main.js',
+            template: 'public/index.html',
+            title: 'Home',
+            chunks: ['chunks-vendors', 'chunk-common', 'medico/home']
         }
     }
 }
