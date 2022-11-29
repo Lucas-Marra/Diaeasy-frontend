@@ -111,6 +111,7 @@ export default {
                     })
                     .catch(() => {
                         this.mensagemModal = 'Ocorreu um erro!'
+                        this.marcacao = {...this.marcacaoOriginal}
                         this.$refs.modalConfirmacao.abrirModal(false);
                     });
             }

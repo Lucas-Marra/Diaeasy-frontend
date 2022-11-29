@@ -4,7 +4,7 @@
         <div id="grid">
             <SideBarNavigation class="position-sticky" tipo="medico"/>
             <div id="content">
-                <h2 class="ms-4 mt-5">Bem-vindo, {{ nome }}</h2>
+                <h2 class="ms-4 mt-5 mb-5">Bem-vindo, {{ nome }}</h2>
                 <div class="ms-4 d-flex justify-content-start">
                     <CardAcao class="me-3" acao="Cadastrar Paciente" redirect="/medico/cadastrar-paciente"/>
                     <CardAcao class="me-3" acao="Consultar Pacientes" redirect="/medico/consultar-pacientes"/>
@@ -18,12 +18,14 @@
 <script>
 import HeaderNavigation from "@/components/HeaderNavigation.vue";
 import SideBarNavigation from "@/components/SideBarNavigation.vue";
+import CardAcao from "@/components/CardAcao.vue";
 
 export default {
     name: 'App',
     components: {
         HeaderNavigation,
         SideBarNavigation,
+        CardAcao
         
     },
     data() {

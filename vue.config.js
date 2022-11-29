@@ -40,6 +40,24 @@ module.exports = {
             template: 'public/index.html',
             title: 'Home',
             chunks: ['chunks-vendors', 'chunk-common', 'medico/home']
+        },
+        'medico/cadastrar-paciente': {
+            entry: './src/pages/medico/Cadastrar-paciente/main.js',
+            template: 'public/index.html',
+            title: 'Cadastrar Paciente',
+            chunks: ['chunks-vendors', 'chunk-common', 'medico/cadastrar-paciente']
+        },
+        'medico/consultar-pacientes': {
+            entry: './src/pages/medico/Consultar-pacientes/main.js',
+            template: 'public/index.html',
+            title: 'Consultar Pacientes',
+            chunks: ['chunks-vendors', 'chunk-common', 'medico/consultar-pacientes']
+        },
+        'medico/detalhar-paciente': {
+            entry: './src/pages/medico/Detalhar-paciente/main.js',
+            template: 'public/index.html',
+            title: 'Detalhar Paciente',
+            chunks: ['chunks-vendors', 'chunk-common', 'medico/detalhar-paciente']
         }
     }
 }
