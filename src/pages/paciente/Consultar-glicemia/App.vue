@@ -37,7 +37,7 @@
                                         glicemia.status }}</strong>
                                         <strong v-else class="text-danger">{{ glicemia.status }}</strong>
                                     </td>
-                                    <td><img @click="excluir(glicemia)" src="../../../assets/excluir.png" class="icons" title="deletar"/></td>
+                                    <td><img @click="confirmarExcluir(glicemia)" src="../../../assets/excluir.png" class="icons" title="deletar"/></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -67,6 +67,24 @@
                 </div>
             </div>
         </div>
+        <div class="modal " id="modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Excluir</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Confirmar exclusão de glicemia?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" id="cancelar" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-primary" @click="excluir()">Confirmar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 </template>
 
@@ -74,6 +92,7 @@
 import HeaderNavigation from "@/components/HeaderNavigation.vue";
 import SideBarNavigation from "@/components/SideBarNavigation.vue";
 import axios from 'axios';
+import * as bootstrap from 'bootstrap';
 
 export default {
     name: 'App',
@@ -141,7 +160,15 @@ export default {
         registrarNova() {
             window.location.href = '/paciente/marcar-glicemia';
         },
-        excluir(glicemia) {
+        confirmarExcluir(glicemia) {
+            localStorage.setItem('glicemiaSelecionada', JSON.stringify(glicemia));
+            const modal = new bootstrap.Modal('#modal');
+            
+            modal.show();
+        },
+        excluir() {
+            const glicemia = JSON.parse(localStorage.getItem('glicemiaSelecionada'));
+
             const config = {
                 headers: { Authorization: `Bearer ${JSON.parse(localStorage.getItem('dadosLogin')).token}` }
             };
@@ -151,8 +178,14 @@ export default {
                 this.glicemias = response.data;
                 this.exibeTabela = (this.glicemias.length > 0)
                 this.buscarGlicemias();
+
+                document.getElementById('cancelar').click();
+                
             })
-            .catch(error => console.error(error))
+            .catch(error => {
+                console.error(error);
+                document.getElementById('cancelar').click();
+            })
 
         }
     }
