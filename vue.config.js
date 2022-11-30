@@ -58,6 +58,18 @@ module.exports = {
             template: 'public/index.html',
             title: 'Detalhar Paciente',
             chunks: ['chunks-vendors', 'chunk-common', 'medico/detalhar-paciente']
+        },
+        'medico/consultar-glicemias-paciente': {
+            entry: './src/pages/medico/Consultar-glicemias-paciente/main.js',
+            template: 'public/index.html',
+            title: 'Consultar Glicemias',
+            chunks: ['chunks-vendors', 'chunk-common', 'medico/consultar-glicemias-paciente']
+        },
+        'medico/detalhar-glicemia-paciente': {
+            entry: './src/pages/medico/Detalhar-glicemia-paciente/main.js',
+            template: 'public/index.html',
+            title: 'Detalhar Glicemia',
+            chunks: ['chunks-vendors', 'chunk-common', 'medico/detalhar-glicemia-paciente']
         }
     }
 }

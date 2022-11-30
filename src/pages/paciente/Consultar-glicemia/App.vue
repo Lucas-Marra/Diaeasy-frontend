@@ -183,11 +183,6 @@ export default {
     cursor: pointer;
 }
 
-.path {
-    background-color: darkgrey;
-    color: white
-}
-
 .icons {
     width: 25px;
 }

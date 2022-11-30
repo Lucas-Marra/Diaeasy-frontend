@@ -85,6 +85,10 @@ export default {
         registrarNovo() {
             window.location.href = '/medico/cadastrar-paciente';
         },
+        glicemias(paciente) {
+            localStorage.setItem('paciente', JSON.stringify(paciente));
+            window.location.href = '/medico/consultar-glicemias-paciente'
+        },
         formataData(data) {
             return data.substring(8, 10) + "/"
                 + data.substring(5, 7) + "/"
