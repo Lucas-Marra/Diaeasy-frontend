@@ -1,5 +1,5 @@
 {
-  "name": "teste-vue-ui",
+  "name": "diaeasy",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -10,8 +10,11 @@
   "dependencies": {
     "@vuelidate/core": "^2.0.0-alpha.42",
     "@vuelidate/validators": "^2.0.0-alpha.30",
+    "axios": "^1.1.2",
+    "bootstrap": "^5.2.2",
     "core-js": "^3.8.3",
-    "vue": "^3.2.37"
+    "vue": "^3.2.37",
+    "vue-the-mask": "^0.11.1"
   },
   "devDependencies": {
     "@babel/core": "^7.12.16",

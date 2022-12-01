@@ -1,12 +1,14 @@
-import { validaPaciente } from '@/services/util';
+import { validaMedico } from '@/services/util';
 import axios from 'axios';
 import { createApp } from 'vue'
 import App from './App.vue'
 
-if(validaPaciente()) {
+
+if(validaMedico()) {
     const token = JSON.parse(localStorage.getItem('dadosLogin')).token;
-    axios.get(`http://localhost:8081/paciente/auth/validaToken/${token}`)
-        .then(() => {
+    axios.get(`http://localhost:8081/medico/auth/validaToken/${token}`)
+        .then((response) => {
+            console.log(response)
             createApp(App).mount('#app');
         })
         .catch((error) => {

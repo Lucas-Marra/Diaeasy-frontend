@@ -13,4 +13,4 @@ if(validaPaciente()) {
             console.log(JSON.parse(JSON.stringify(error)))
             window.location.href = '/login'
         })
-}else window.location.href = '/login';
+} else window.location.href = '/login';
